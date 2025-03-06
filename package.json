@@ -1,0 +1,30 @@
+{
+  "name": "mps_salebot",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node dist/bot.js",
+    "dev": "tsx watch bot.ts",
+    "build": "tsc && node dist/bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "Ivan Sukhachev",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^13.2.0",
+    "grammy": "^1.35.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "@types/node-fetch": "^2.6.12",
+    "eslint": "^8.56.0",
+    "tsx": "^4.19.3",
+    "typescript": "~5.5.0",
+    "typescript-eslint": "^7.0.0"
+  },
+  "type": "module"
+}
