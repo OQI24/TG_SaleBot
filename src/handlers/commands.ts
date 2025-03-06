@@ -26,7 +26,7 @@ export const deleteOffer = async (ctx: BotContext) => {
   if (ctx.message?.text?.startsWith('🥹')) {
     ctx.session = {};
     await sendSticker(ctx, StickerType.GOODBYE);
-    await removeKeyboard(ctx, "Хорошо, если что, я всегда тут! А доступные команды в меню слева \n👇");
+    await removeKeyboard(ctx, 'Хорошо, если что, я всегда тут! А доступные команды в меню слева \n👇');
     return;
   }
 
