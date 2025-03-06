@@ -8,7 +8,7 @@ export const handleText = async (ctx: BotContext) => {
   const PUBLISH_CHANNEL_ID = process.env.PUBLISH_CHANNEL_ID;
 
   if (chatId !== PUBLISH_CHANNEL_ID) {
-    return;
+    // return;
   }
 
   if (ctx.session.actionType === 'delete') {
