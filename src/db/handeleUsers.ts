@@ -6,7 +6,10 @@ export type UserType = 'old' | 'new' | null;
 
 export const handleStartUser = async (ctx: BotContext) => {
   let userType: UserType = null;
-  const {id: userId, username, first_name, last_name} = ctx.from as User;
+  const userId = ctx.from?.id;
+  const first_name = ctx.from?.first_name || "";
+  const last_name = ctx.from?.last_name || "";
+  const username = ctx.from?.username || "";
 
   if (userId && username) {
     const userRef = db.ref(`users/${String(userId)}`);

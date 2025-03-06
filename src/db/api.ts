@@ -25,7 +25,7 @@ export const createAd = async (ctx: BotContext, { messageId, text, link }: Ad) =
       throw new Error('Пользователь не найден в базе данных.');
     }
         
-    const adsCount = (userData.adsCount || 0) + 1;
+    const adsCount = (userData?.adsCount || 0) + 1;
     await userRef.update({
       adsCount,
       [`ads/${messageId}`]: {
@@ -63,7 +63,7 @@ export const getUserAds = async (ctx: BotContext) => {
   const snapshot = await userRef.once('value');
   const userData = snapshot.val();
 
-  return userData.ads;
+  return userData?.ads || [];
 };
 
 export const deleteAd = async (ctx: BotContext, messageId: string) => {
@@ -87,7 +87,7 @@ export const deleteAd = async (ctx: BotContext, messageId: string) => {
 
   await userRef.child(`ads/${messageId}`).remove();
 
-  const newAdsCount = userData.adsCount - 1;
+  const newAdsCount = userData?.adsCount - 1;
   await userRef.update({ adsCount: newAdsCount });
 
   return true;

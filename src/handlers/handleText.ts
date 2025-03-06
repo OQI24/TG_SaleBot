@@ -5,7 +5,7 @@ import { createOfferProcess } from './createOfferProcess';
 
 export const handleText = async (ctx: BotContext) => {
   const chatId = ctx.message?.chat.id;
-  const PUBLISH_CHANNEL_ID = process.env.PUBLISH_CHANNEL_ID;
+  const PUBLISH_CHANNEL_ID = process.env.PUBLISH_CHANNEL_ID; //1443629975?
 
   if (chatId !== PUBLISH_CHANNEL_ID) {
     // return;
