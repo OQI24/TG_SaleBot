@@ -1,6 +1,6 @@
 import { getUserAds, getUserCounts } from '../db/api';
-import { BotContext, Steps } from '../types/botContext';
-import { removeKeyboard, sendReply } from '../utils/sendReply';
+import { BotContext, Steps, StickerType } from '../types/botContext';
+import { removeKeyboard, sendReply, sendSticker } from '../utils/sendReply';
 import { deleteAds } from './deleteAds';
 
 export const createOffer = async (ctx: BotContext) => {
@@ -20,6 +20,13 @@ export const deleteOffer = async (ctx: BotContext) => {
   if (ctx.message?.text?.startsWith('🗑')) {
     await deleteAds(ctx);
     ctx.session = {};
+    return;
+  }
+
+  if (ctx.message?.text?.startsWith('🥹')) {
+    ctx.session = {};
+    await sendSticker(ctx, StickerType.GOODBYE);
+    await removeKeyboard(ctx, "Хорошо, если что, я всегда тут! А доступные команды в меню слева \n👇");
     return;
   }
 

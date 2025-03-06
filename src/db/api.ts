@@ -1,5 +1,5 @@
 import BotContext from '../types/botContext';
-import db from './firebase';
+import db from './init_db';
 
 type Ad = {
     messageId: string;

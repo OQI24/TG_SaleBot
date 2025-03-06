@@ -1,5 +1,12 @@
 import { Context, SessionFlavor } from 'grammy';
 
+export enum StickerType {
+    START = 'START',
+    DELETE = 'DELETE',
+    GOODBYE = 'GOODBYE',
+    ERROR = 'ERROR',
+}
+
 export enum Steps {
     CITY = 'city',
     CONFIRM = 'confirm',

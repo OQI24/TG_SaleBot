@@ -1,4 +1,6 @@
 import BotContext from '../types/botContext';
+import { getRandomSticker } from './getRandomSticker';
+import { STICKERS } from '../constants/stickers';
 
 export const sendReply = async (ctx: BotContext, msg: string, buttons?: string[]) => {
   const reply_markup = buttons ? {
@@ -10,7 +12,6 @@ export const sendReply = async (ctx: BotContext, msg: string, buttons?: string[]
   await ctx.reply(msg, {reply_markup});
 };
 
-// Функция для удаления клавиатуры
 export const removeKeyboard = async (ctx: BotContext, msg?: string) => {
   await ctx.reply(msg || '...', {
     reply_markup: {
@@ -18,4 +19,16 @@ export const removeKeyboard = async (ctx: BotContext, msg?: string) => {
     },
     parse_mode: 'HTML'
   });
+};
+
+export const sendSticker = async (ctx: BotContext, stickerType: keyof typeof STICKERS) => {
+  const stickerId = getRandomSticker(STICKERS[stickerType]);
+
+  if (stickerId) {
+    try {
+      await ctx.replyWithSticker(stickerId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 };

@@ -1,6 +1,6 @@
 import { User } from 'grammy/types';
 import BotContext from '../types/botContext';
-import db from './firebase';
+import db from './init_db';
 
 export type UserType = 'old' | 'new' | null;
 

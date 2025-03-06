@@ -1,9 +1,9 @@
-import { BotContext, SessionData } from '../types/botContext';
+import { BotContext, SessionData, StickerType } from '../types/botContext';
 import { showPreview } from './preview';
 import { publishOffer } from './publish';
 import { createOffer } from './commands';
 import { Steps } from '../types/botContext';
-import { sendReply } from '../utils/sendReply';
+import { removeKeyboard, sendReply, sendSticker } from '../utils/sendReply';
 import { createMedia } from '../utils/createMedia';
 
 export const createOfferProcess = async (ctx: BotContext) => {
@@ -139,7 +139,13 @@ export const createOfferProcess = async (ctx: BotContext) => {
   }
 
   default: {
-    await sendReply(ctx, 'Что-то пошло не так. Попробуйте снова.');
+    ctx.session = {};
+    try {
+      await sendSticker(ctx, StickerType.ERROR);
+      await removeKeyboard(ctx, 'Что-то пошло не так. Попробуйте снова.');
+    } catch (error) {
+      console.error(error);
+    }
     break;
   }
   }
