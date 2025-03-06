@@ -21,11 +21,11 @@ if (!private_key_id || !private_key || !client_id || !project_id || !client_emai
 const app = initializeApp({
   credential: cert({
     ...serviceAccount, 
-    private_key_id, 
-    client_id,
-    project_id,
-    client_email,
-    private_key: private_key,
+    // private_key_id, 
+    // client_id,
+    // project_id,
+    // client_email,
+    // private_key: private_key,
   } as ServiceAccount),
   databaseURL,
 });
